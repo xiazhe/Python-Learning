@@ -20,5 +20,9 @@ docs/_build
 .tox
 .coverage
 
+# db file
+*.db
+*.sqlite
+
 data/
 venv/
