@@ -5,6 +5,13 @@
     <title>Title</title>
 </head>
 <body>
+<!-- custom form -->
+<form method="POST" action="/login">
+    <div class="form-group">
+        {{ form.username.label }} :: {{ form.username(class='form-control') }}
+    </div>
+
+</form>
 
 </body>
 </html>
