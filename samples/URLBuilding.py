@@ -1,12 +1,17 @@
 from flask import Flask, url_for
+
 app = Flask(__name__)
+
+
 @app.route('/')
 def index():
     return "index"
 
+
 @app.route('/login')
 def login():
     pass
+
 
 @app.route('/user/<username>')
 def profile(username):
