@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-# A Minimal Application
+# A Minimal Application http://flask-restful-cn.readthedocs.io/zh/latest/quickstart.html#api
 from flask import Flask
 
 app = Flask(__name__)
@@ -13,7 +13,8 @@ def before_first_request():
 
 @app.before_request
 def before_request():
-    print 'before request'
+    doSomeThing = 'do something'
+    print 'before request' + doSomeThing
 
 
 # @app.after_request
@@ -29,7 +30,12 @@ def before_request():
 
 @app.route('/')
 def hello_world():
+
     return 'Hello World!'
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(port=8002, debug=True)
+
+# socket.error: [Errno 10013]
+# 更换端口
+# netstat -ban
