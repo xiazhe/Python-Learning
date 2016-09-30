@@ -9,3 +9,4 @@ wheel==0.29.0
 Flask-Login
 Flask-WTF
 Flask-SQLAlchemy
+flask-cors

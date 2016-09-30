@@ -1,33 +1,55 @@
 # -*- coding: UTF-8 -*-
 
+# http://stackoverflow.com/questions/19962699/flask-restful-cross-domain-issue-with-angular-put-options-methods
+# https://pypi.python.org/pypi/Flask-Cors
+# use Flask-CORS cross-domain
+
 from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
+# from flask.ext.cors import CORS
 
 
 
 app = Flask(__name__)
+# cors = CORS(app, resources={r"/*": {"origins": "*"}})
 api = Api(app)
 
-TODOS = {
-    'todo1': {'task': 'build an API'},
-    'todo2': {'task': 'do something'},
-    'todo3': {'task': 'profit!'},
-}
+# use the after_request hook http://tutsbucket.com/tutorials/building-a-blog-using-flask-and-angularjs-part-1/
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
 
-PROJECTS = {
-    'project1': {
+
+
+TODOS = [
+    {
+        'task': 'build an API'
+    },
+    {
+        'task': 'do something'
+    },
+    {
+        'task': 'profit!'
+    }
+]
+
+PROJECTS = [
+    {
         'name': 'todo app',
         'description': 'Lorem dolor sit amet ipsum dolor sit consectetuer dolore. Lorem dolor sit amet ipsum dolor sit consectetuer dolore.',
         'tasks': '17',
         'members': '16'
     },
-    'project2': {
+    {
         'name': 'note book',
         'description': 'Lorem dolor sit amet ipsum dolor sit consectetuer dolore. Lorem dolor sit amet ipsum dolor sit consectetuer dolore.',
         'tasks': '43',
         'members': '32'
     }
-}
+]
 
 # check todo_id is exist
 def abort_if_todo_doesnt_exist(todo_id):
@@ -80,7 +102,7 @@ class TodoList(Resource):
 class Project(Resource):
     def get(self, project_id):
         abort_if_project_doesnt_exist(project_id)
-        return PROJECTS[project_id]
+        return PROJECTS[project_id], 200
 
     def delete(self, project_id):
         abort_if_project_doesnt_exist(project_id)
@@ -100,7 +122,7 @@ class Project(Resource):
 
 class ProjectList(Resource):
     def get(self):
-        return PROJECTS
+        return PROJECTS, 200
 
     def post(self):
         args = parser.parse_args()
