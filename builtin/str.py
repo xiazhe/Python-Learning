@@ -8,14 +8,18 @@ __str__()用于表示对象代表的含义，返回一个字符串.
 
 
 class Fruit:
-    """Fruit class"""           # 为Fruit类定义了文档字符串
+    """
+    Fruit class
+    """           # 为Fruit类定义了文档字符串
 
     def __str__(self):          # 定义对象的字符串表示
         return self.__doc__
 
 
 class Animal:
-    '''Animal class'''
+    """
+    Animal class
+    """
     def __init__(self):
         pass
 

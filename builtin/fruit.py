@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-'''
+"""
 __getattr__()、__setattr__()和__getattribute__():
 当读取对象的某个属性时，python会自动调用__getattr__()方法.
 例如，fruit.color将转换为fruit.__getattr__(color).
@@ -7,10 +7,11 @@ __getattr__()、__setattr__()和__getattribute__():
 __getattribute__()的功能与__getattr__()类似，用于获取属性的值.
 但是__getattribute__()能提供更好的控制，代码更健壮.
 注意，python中并不存在__setattribute__()方法.
-'''
+"""
+
 
 class Fruit(object):
-    def __init__(self, color = "red", price = 0):
+    def __init__(self, color="red", price=0):
         self.__color = color
         self.__price = price
 
@@ -19,6 +20,7 @@ class Fruit(object):
 
     def __setattr__(self, name, value):
         self.__dict__[name] = value
+
 
 if __name__ == "__main__":
     fruit = Fruit("blue", 10)

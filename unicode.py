@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*
+# 参见 http://www.unicode.org/
+
 from __future__ import unicode_literals
 
 strUnicode = u"unicode字符串"
