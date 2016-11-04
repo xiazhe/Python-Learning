@@ -22,7 +22,7 @@ class foo:
 f = foo(1, 2, 3)    # __init__
 
 
-#The second implements function call operator.
+# The second implements function call operator.
 class bar:
     def __call__(self, a, b, c):
         pass
@@ -32,6 +32,6 @@ b = bar()
 b(1, 2, 3)
 
 
-
+# http://stackoverflow.com/questions/3369640/when-is-using-call-a-good-idea
 
 

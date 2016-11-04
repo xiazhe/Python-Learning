@@ -9,5 +9,3 @@ print abs(-1), abs(10), abs(1.1)
 
 
 
-
-
